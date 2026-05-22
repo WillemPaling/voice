@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Messenger Embed</title>
+    <script defer src="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/chat-messenger.js"></script>
+    <link rel="stylesheet" href="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/themes/chat-messenger-default.css" />
+    <link rel="stylesheet" href="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/themes/chat-messenger-layout.css" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        min-height: 100%;
+      }
+      chat-messenger {
+        flex: 1;
+        min-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("chat-messenger-loaded", () => {
+        chatSdk.registerContext(
+          chatSdk.prebuilts.ces.createContext({
+            deploymentName:
+              "projects/268493360925/locations/us/apps/5d0fc002-a9cd-4138-8352-182c9953826d/deployments/de42b584-155c-495f-9f01-58b10694096b",
+            tokenBroker: {
+              enableTokenBroker: true,
+              enableRecaptcha: false,
+            },
+          }),
+        );
+      });
+    </script>
+
+    <chat-messenger url-allowlist="*" color-scheme="dark">
+      <chat-messenger-container
+        chat-title="AU FNOL DEMO"
+        chat-title-icon="https://gstatic.com/dialogflow-console/common/assets/ccai-favicons/conversational_agents.png"
+        enable-file-upload
+        enable-audio-input
+        enable-audio-input-only
+        start-with-recording
+      >
+        <chat-reset-session-button slot="titlebar-actions" title-text="Start new chat"></chat-reset-session-button>
+        <chat-toggle-dialog-button
+          slot="titlebar-actions"
+          title-text-expanded="Collapse"
+          title-text-collapsed="Expand"
+        ></chat-toggle-dialog-button>
+        <chat-messenger-close-button slot="titlebar-actions" title-text="Close"></chat-messenger-close-button>
+      </chat-messenger-container>
+    </chat-messenger>
+  </body>
+</html>
